@@ -27,3 +27,4 @@ fi
 show_available_spots() {
  echo " Available parking spots:"
  cat available_spots.txt
+}
