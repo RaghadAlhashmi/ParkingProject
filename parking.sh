@@ -26,4 +26,22 @@ park_car(){
 }
 
 
+# Retrive a car part of code
+retrive_car(){
+    local ticket_id=$1
+    local record=$(grep "^$ticket_id," "$parking_data")
+    if [ -z "$record" ]; then
+        echo "Invalid ticket ID>"
+        return 1
+    fi
+    local spot=$(echo "$record" | cut -d',' -f3)
+    local parked_time=$(echo "$record" | cut -d',' -f4)
+    local current_time=$(data +%s)
+    local parked_duration=$(( (current_time - parked_time) / 60 ))
+    local cost=$((parked_duration * 5))
 
+    sed -i "/^$ticket_id,/d" "$parking_data"
+    echo "$spot" >> available_spots.txt #Adds spot back to available spots
+    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minuts."
+
+}
