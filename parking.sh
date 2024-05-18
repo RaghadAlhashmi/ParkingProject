@@ -10,4 +10,20 @@ generate_ticket_id() {
 }
 
 # park a car
+park_car(){
+    local car=$1
+    local spot=$2
+
+    if ! grep -qx "$spot" available_spots.txt; then
+        echo "Spot $spot is not available."
+        return 1
+    fi
+
+    local ticket_id=$(generate_ticket_id)
+    echo "$ticket_id,$car,$spot,$(data +%s)" >> "$parking_data"
+    sed -i "/^$spot$/d" available_spot.txt #Removes spot from available spots
+    echo "Parked car: $car at spot: $spot with Ticket ID: $ticket_id"
+}
+
+
 
