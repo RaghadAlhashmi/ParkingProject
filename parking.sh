@@ -45,3 +45,4 @@ retrive_car(){
     echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minuts."
 
 }
+#checking for errors but can't find it yet
