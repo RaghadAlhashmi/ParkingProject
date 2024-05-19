@@ -16,7 +16,9 @@ while true
    case $choice in
       1)
         read -p "Enter car registration number: " car_number
-        park_car "$car_number"
+        read -p "Enter parking spot number: " spot_number 
+
+        park_car "$car_number" "$spot_number"
         ;;
  
       2) 
