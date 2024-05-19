@@ -21,7 +21,7 @@ park_car(){
 
     local ticket_id=$(generate_ticket_id)
     echo "$ticket_id,$car,$spot,$(data +%s)" >> "$parking_data"
-    sed -i "/^$spot$/d" available_spot.txt #Removes spot from available spots
+    sed -i "/^$spot$/d" available_spots.txt #Removes spot from available spots
     echo "Parked car: $car at spot: $spot with Ticket ID: $ticket_id"
 }
 
