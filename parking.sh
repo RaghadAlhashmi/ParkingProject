@@ -6,7 +6,7 @@ source data.sh
 generate_ticket_id() {
   local last_ticket=$(tail -1 "parking_data.txt" | awk -F, '{print $1}' | sed 's/TICKET//')
   local ticket_number=$((last_ticket + 1))
-  echo "TICKET$last_ticket"
+  echo "TICKET$ticket_number"
 }
 
 # park a car
@@ -26,8 +26,8 @@ park_car(){
 }
 
 
-# Retrive a car part of code
-retrive_car(){
+# Retrieve a car part of code
+retrieve_car(){
     local ticket_id=$1
     local record=$(grep "^$ticket_id," "$parking_data")
     if [ -z "$record" ]; then
@@ -42,7 +42,7 @@ retrive_car(){
 
     sed -i "/^$ticket_id,/d" "$parking_data"
     echo "$spot" >> available_spots.txt #Adds spot back to available spots
-    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minuts."
+    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minutes."
 
 }
 
