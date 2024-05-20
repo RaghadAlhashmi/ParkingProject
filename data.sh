@@ -1,9 +1,9 @@
 #!/bin/bash
 # File paths
 parking_data="parking_data.txt"
-if [ ! -f "$parking_data" ]
+if [ ! -f "$parking_data.txt" ]
  then
-     touch "parking_data"
+     touch "parking_data.txt"
 fi
 
 

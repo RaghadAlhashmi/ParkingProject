@@ -4,7 +4,7 @@ source data.sh
 
 # generating parking tickets
 generate_ticket_id() {
-  local last_ticket=$(tail -1 "parking_data" | awk -F, '{print $1}' | sed 's/TICKET//')
+  local last_ticket=$(tail -1 "parking_data.txt" | awk -F, '{print $1}' | sed 's/TICKET//')
   local ticket_number=$((last_ticket + 1))
   echo "TICKET$last_ticket"
 }
