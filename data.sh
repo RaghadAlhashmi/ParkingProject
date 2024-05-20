@@ -1,9 +1,9 @@
 #!/bin/bash
 # File paths
 parking_data="parking_data.txt"
-if [ ! -f "$parking_data.txt" ]
+if [ ! -f "$parking_data" ]
  then
-     touch "parking_data.txt"
+     touch "parking_data"
 fi
 
 
@@ -11,7 +11,7 @@ fi
 initialize_spots() {
  local i=1
  while [ $i -le 50 ]
- do
+  do
    echo $i
    i=$((i + 1))
  done > available_spots.txt
