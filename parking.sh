@@ -38,11 +38,11 @@ retrieve_car(){
     local parked_time=$(echo "$record" | cut -d',' -f4)
     local current_time=$(date +%s)
     local parked_duration=$(( (current_time - parked_time) / 60 ))
-    local cost=$((parked_duration * 5))
+    local cost=$(awk "BEGIN {print $parked_duration * 0.50}")
 
     sed -i "/^$ticket_id,/d" "$parking_data"
     echo "$spot" >> available_spots.txt #Adds spot back to available spots
-    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minutes.Cost: $cost dollars"
+    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minutes.Cost: $cost SAR"
 
 }
 
