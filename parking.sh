@@ -42,7 +42,7 @@ retrieve_car(){
 
     sed -i "/^$ticket_id,/d" "$parking_data"
     echo "$spot" >> available_spots.txt #Adds spot back to available spots
-    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minutes."
+    echo "Retrieved car from spot: $spot. Parked duration: $parked_duration minutes.Cost: $cost dollars"
 
 }
 
